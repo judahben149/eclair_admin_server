@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(url = "http://localhost:8080", description = "Local Development"),
-                @Server(url = "https://eclair-api.fly.dev", description = "Production")
+                @Server(url = "/", description = "Current Environment")
         }
 )
 @SecurityScheme(
