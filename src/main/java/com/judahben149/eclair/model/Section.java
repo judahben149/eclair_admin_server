@@ -41,6 +41,7 @@ public class Section {
     @OneToMany(mappedBy = "section", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("displayOrder ASC")
     @Builder.Default
+    @org.hibernate.annotations.BatchSize(size = 10)
     private List<ContentItem> contentItems = new ArrayList<>();
 
     @CreatedDate

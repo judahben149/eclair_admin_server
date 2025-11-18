@@ -15,9 +15,9 @@ public interface ConceptRepository extends JpaRepository<Concept, Long> {
 
     List<Concept> findAllByOrderByDisplayOrderAsc();
 
-    @Query("SELECT c FROM Concept c LEFT JOIN FETCH c.sections s LEFT JOIN FETCH s.contentItems WHERE c.id = :id ORDER BY s.displayOrder")
+    @Query("SELECT DISTINCT c FROM Concept c LEFT JOIN FETCH c.sections WHERE c.id = :id")
     Optional<Concept> findByIdWithDetails(Long id);
 
-    @Query("SELECT c FROM Concept c LEFT JOIN FETCH c.sections s LEFT JOIN FETCH s.contentItems WHERE c.id = :id AND c.published = true ORDER BY s.displayOrder")
+    @Query("SELECT DISTINCT c FROM Concept c LEFT JOIN FETCH c.sections WHERE c.id = :id AND c.published = true")
     Optional<Concept> findPublishedByIdWithDetails(Long id);
 }
